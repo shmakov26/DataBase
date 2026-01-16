@@ -94,6 +94,22 @@ public class ShiftController implements Initializable {
         shiftTable.setItems(shiftList);
         
         waiterCombo.setItems(waiterList);
+        // Настройка ComboBox для отображения только имени официанта
+        waiterCombo.setConverter(new javafx.util.StringConverter<Waiter>() {
+            @Override
+            public String toString(Waiter waiter) {
+                return waiter != null ? waiter.getLastName() + " " + waiter.getFirstName() + " (ID: " + waiter.getId() + ")" : "";
+            }
+
+            @Override
+            public Waiter fromString(String string) {
+                return waiterList.stream()
+                        .filter(w -> (w.getLastName() + " " + w.getFirstName() + " (ID: " + w.getId() + ")").equals(string))
+                        .findFirst()
+                        .orElse(null);
+            }
+        });
+        
         shiftCombo.setItems(shiftIdList);
         
         ToggleGroup group = new ToggleGroup();

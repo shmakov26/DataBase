@@ -34,8 +34,20 @@ public class WaiterService {
         return waiterRepository.save(waiter);
     }
 
+    @Transactional(readOnly = true)
     public List<Waiter> getWaiters() {
-        return waiterRepository.findAll();
+        List<Waiter> waiters = waiterRepository.findAll();
+        // Убеждаемся, что все поля загружены, но не трогаем коллекцию shifts
+        waiters.forEach(w -> {
+            w.getId();
+            w.getFirstName();
+            w.getLastName();
+            w.getMiddleName();
+            w.getMail();
+            w.getPhoneNumber();
+            w.getPercent();
+        });
+        return waiters;
     }
 
     public Waiter getById(int id) {

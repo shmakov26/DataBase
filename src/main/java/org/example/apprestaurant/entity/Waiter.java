@@ -4,10 +4,14 @@ import jakarta.persistence.*;
 import java.util.List;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(exclude = "shifts")
+@ToString(exclude = "shifts")
 @Entity
 @Table(name = "waiters")
 public class Waiter {
@@ -34,7 +38,7 @@ public class Waiter {
     @Column(nullable = false)
     private Integer percent;
 
-    @OneToMany(mappedBy = "waiter")
+    @OneToMany(mappedBy = "waiter", fetch = FetchType.LAZY)
     private List<Shift> shifts;
 }
 
