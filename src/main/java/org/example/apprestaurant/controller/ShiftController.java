@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -159,16 +160,30 @@ public class ShiftController implements Initializable {
             return;
         }
 
-        shiftList.clear();
-        shiftList.addAll(shiftService.getShiftsByWaiter(selected.getId()));
+        try {
+            shiftList.clear();
+            List<Shift> shifts = shiftService.getShiftsByWaiter(selected.getId());
+            // Копируем данные в ObservableList, чтобы избежать проблем с ленивой загрузкой
+            shiftList.addAll(shifts);
+        } catch (Exception e) {
+            showError("Ошибка загрузки смен: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void refreshOpenShifts() {
-        shiftList.clear();
-        shiftList.addAll(shiftService.getOpenShifts());
-        
-        shiftIdList.clear();
-        shiftList.forEach(s -> shiftIdList.add(s.getId()));
+        try {
+            shiftList.clear();
+            List<Shift> shifts = shiftService.getOpenShifts();
+            // Копируем данные в ObservableList, чтобы избежать проблем с ленивой загрузкой
+            shiftList.addAll(shifts);
+            
+            shiftIdList.clear();
+            shiftList.forEach(s -> shiftIdList.add(s.getId()));
+        } catch (Exception e) {
+            showError("Ошибка загрузки смен: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void refreshWaiters() {

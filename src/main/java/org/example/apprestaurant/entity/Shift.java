@@ -16,7 +16,7 @@ public class Shift {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "waiter_id", nullable = false)
     private Waiter waiter;
 

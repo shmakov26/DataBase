@@ -54,14 +54,34 @@ public class ShiftService {
                 .orElseThrow(() -> new EntityNotFoundException("Смена не найдена"));
     }
 
+    @Transactional(readOnly = true)
     public List<Shift> getOpenShifts() {
-        // JOIN FETCH загружает waiter вместе со сменой, избегая LazyInitializationException
-        return shiftRepository.findByShiftEndIsNull();
+        List<Shift> shifts = shiftRepository.findByShiftEndIsNull();
+        // Принудительно инициализируем все поля Waiter в рамках транзакции
+        shifts.forEach(s -> {
+            if (s.getWaiter() != null) {
+                // Доступ к полям для инициализации прокси
+                s.getWaiter().getId();
+                s.getWaiter().getFirstName();
+                s.getWaiter().getLastName();
+            }
+        });
+        return shifts;
     }
 
+    @Transactional(readOnly = true)
     public List<Shift> getShiftsByWaiter(int waiterId) {
-        // JOIN FETCH загружает waiter вместе со сменой, избегая LazyInitializationException
-        return shiftRepository.findByWaiterId(waiterId);
+        List<Shift> shifts = shiftRepository.findByWaiterId(waiterId);
+        // Принудительно инициализируем все поля Waiter в рамках транзакции
+        shifts.forEach(s -> {
+            if (s.getWaiter() != null) {
+                // Доступ к полям для инициализации прокси
+                s.getWaiter().getId();
+                s.getWaiter().getFirstName();
+                s.getWaiter().getLastName();
+            }
+        });
+        return shifts;
     }
 
     public Shift getRandomOpenShift() {
