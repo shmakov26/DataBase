@@ -67,7 +67,7 @@
                   </TableView>
                   
                   <Label fx:id="totalPriceLabel" styleClass="section-label" />
-                  <Label fx:id="messageLabel" />
+                  <TextArea fx:id="messageLabel" editable="false" wrapText="true" prefRowCount="2" maxHeight="50" styleClass="message-area" />
                </children>
             </VBox>
          </children>

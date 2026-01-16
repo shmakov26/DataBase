@@ -15,7 +15,7 @@ import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class ShiftService {
 
     private final ShiftRepository shiftRepository;

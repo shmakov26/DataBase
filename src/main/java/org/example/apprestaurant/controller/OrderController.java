@@ -10,6 +10,7 @@ import org.example.apprestaurant.entity.Dish;
 import org.example.apprestaurant.entity.Order;
 import org.example.apprestaurant.entity.OrderItem;
 import org.example.apprestaurant.entity.TableEntity;
+import org.example.apprestaurant.entity.Visitor;
 import org.example.apprestaurant.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -75,7 +76,7 @@ public class OrderController implements Initializable {
     private Label totalPriceLabel;
 
     @FXML
-    private Label messageLabel;
+    private TextArea messageLabel;
 
     @FXML
     private Label orderInfoLabel;
@@ -305,13 +306,13 @@ public class OrderController implements Initializable {
 
     private void showError(String message) {
         messageLabel.setText(message);
-        messageLabel.getStyleClass().removeAll("success-label");
-        messageLabel.getStyleClass().add("error-label");
+        messageLabel.getStyleClass().removeAll("success", "message-area");
+        messageLabel.getStyleClass().addAll("message-area", "error");
     }
 
     private void showSuccess(String message) {
         messageLabel.setText(message);
-        messageLabel.getStyleClass().removeAll("error-label");
-        messageLabel.getStyleClass().add("success-label");
+        messageLabel.getStyleClass().removeAll("error", "message-area");
+        messageLabel.getStyleClass().addAll("message-area", "success");
     }
 }

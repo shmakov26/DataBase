@@ -164,3 +164,27 @@
     -fx-border-color: #3498db;
     -fx-border-width: 2px;
 }
+
+/* Область сообщений */
+.message-area {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+    -fx-font-size: 12px;
+}
+
+.message-area.error {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+    -fx-background-color: #fee;
+    -fx-border-color: #e74c3c;
+}
+
+.message-area.success {
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+    -fx-background-color: #efe;
+    -fx-border-color: #27ae60;
+}

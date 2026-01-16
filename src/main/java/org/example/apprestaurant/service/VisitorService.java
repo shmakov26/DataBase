@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class VisitorService {
 
     private final VisitorRepository visitorRepository;
@@ -34,6 +34,12 @@ public class VisitorService {
 
     public void seatVisitor(int visitorId, int tableId) {
         Visitor visitor = getById(visitorId);
+        
+        // Проверка статуса посетителя
+        if (visitor.getState() != VisitorState.WAITING) {
+            throw new IllegalStateException("Можно посадить только посетителя со статусом WAITING. Текущий статус: " + visitor.getState());
+        }
+        
         TableEntity table = tableEntityRepository.findById(tableId)
                 .orElseThrow(() -> new EntityNotFoundException("Столик не найден"));
 
