@@ -60,7 +60,8 @@ public class VisitorController implements Initializable {
         visitorList = FXCollections.observableArrayList();
         visitorIdList = FXCollections.observableArrayList();
         
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // ID колонка скрыта
+        idColumn.setVisible(false);
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("walletBalance"));
         stateColumn.setCellValueFactory(cellData -> {
             var state = cellData.getValue().getState();
@@ -109,6 +110,23 @@ public class VisitorController implements Initializable {
         currentVisitorId = selected;
         updateCurrentVisitorLabel();
         showSuccess("Текущий посетитель: ID " + selected);
+    }
+
+    @FXML
+    private void deleteVisitor() {
+        Visitor selected = visitorTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showError("Выберите посетителя для удаления");
+            return;
+        }
+
+        try {
+            visitorService.deleteVisitor(selected.getId());
+            showSuccess("Посетитель удалён");
+            refreshTable();
+        } catch (Exception e) {
+            showError("Ошибка: " + e.getMessage());
+        }
     }
 
     @FXML

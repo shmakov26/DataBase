@@ -68,7 +68,8 @@ public class ShiftController implements Initializable {
         waiterList = FXCollections.observableArrayList();
         shiftIdList = FXCollections.observableArrayList();
         
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // ID колонка скрыта
+        idColumn.setVisible(false);
         waiterColumn.setCellValueFactory(cellData -> {
             Waiter waiter = cellData.getValue().getWaiter();
             return new javafx.beans.property.SimpleStringProperty(

@@ -55,11 +55,29 @@ public class ShiftService {
     }
 
     public List<Shift> getOpenShifts() {
-        return shiftRepository.findByShiftEndIsNull();
+        List<Shift> shifts = shiftRepository.findByShiftEndIsNull();
+        // Инициализируем ленивые связи в рамках транзакции
+        shifts.forEach(s -> {
+            if (s.getWaiter() != null) {
+                // Инициализируем только имя официанта, не всю коллекцию смен
+                s.getWaiter().getFirstName();
+                s.getWaiter().getLastName();
+            }
+        });
+        return shifts;
     }
 
     public List<Shift> getShiftsByWaiter(int waiterId) {
-        return shiftRepository.findByWaiterId(waiterId);
+        List<Shift> shifts = shiftRepository.findByWaiterId(waiterId);
+        // Инициализируем ленивые связи в рамках транзакции
+        shifts.forEach(s -> {
+            if (s.getWaiter() != null) {
+                // Инициализируем только имя официанта, не всю коллекцию смен
+                s.getWaiter().getFirstName();
+                s.getWaiter().getLastName();
+            }
+        });
+        return shifts;
     }
 
     public Shift getRandomOpenShift() {

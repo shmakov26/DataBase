@@ -56,7 +56,8 @@ public class TableController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tableList = FXCollections.observableArrayList();
         
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // ID колонка скрыта
+        idColumn.setVisible(false);
         numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
         seatsColumn.setCellValueFactory(new PropertyValueFactory<>("seats"));
         statusColumn.setCellValueFactory(cellData -> {

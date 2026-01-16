@@ -71,7 +71,8 @@ public class WaiterController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         waiterList = FXCollections.observableArrayList();
         
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // ID колонка скрыта
+        idColumn.setVisible(false);
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         middleNameColumn.setCellValueFactory(new PropertyValueFactory<>("middleName"));
@@ -104,6 +105,23 @@ public class WaiterController implements Initializable {
             refreshTable();
         } catch (NumberFormatException e) {
             showError("Некорректное значение процента");
+        } catch (Exception e) {
+            showError("Ошибка: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void deleteWaiter() {
+        Waiter selected = waiterTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showError("Выберите официанта для удаления");
+            return;
+        }
+
+        try {
+            waiterService.deleteWaiter(selected.getId());
+            showSuccess("Официант удалён");
+            refreshTable();
         } catch (Exception e) {
             showError("Ошибка: " + e.getMessage());
         }

@@ -59,7 +59,8 @@ public class DishController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         dishList = FXCollections.observableArrayList();
         
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        // ID колонка скрыта
+        idColumn.setVisible(false);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         ingredientsColumn.setCellValueFactory(new PropertyValueFactory<>("ingredients"));

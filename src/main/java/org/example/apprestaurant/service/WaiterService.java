@@ -42,5 +42,13 @@ public class WaiterService {
         return waiterRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Официант не найден"));
     }
+
+    public void deleteWaiter(int id) {
+        if (waiterRepository.findById(id).isPresent()) {
+            waiterRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Официант не найден");
+        }
+    }
 }
 

@@ -34,7 +34,12 @@
             
             <VBox spacing="10" VBox.vgrow="ALWAYS">
                <children>
-                  <Button text="Обновить" onAction="#refreshTable" />
+                  <HBox spacing="10">
+                     <children>
+                        <Button text="Обновить" onAction="#refreshTable" />
+                        <Button text="Удалить" onAction="#deleteVisitor" styleClass="button-danger" />
+                     </children>
+                  </HBox>
                   
                   <TableView fx:id="visitorTable" VBox.vgrow="ALWAYS">
                      <columns>

@@ -66,5 +66,14 @@ public class VisitorService {
         return visitorRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Посетитель не найден"));
     }
+
+    public void deleteVisitor(int id) {
+        Visitor visitor = getById(id);
+        // Освобождаем столик, если посетитель за ним сидит
+        if (visitor.getTable() != null) {
+            visitor.getTable().setStatus(TableStatus.FREE);
+        }
+        visitorRepository.deleteById(id);
+    }
 }
 

@@ -107,6 +107,25 @@ public class OrderController implements Initializable {
         orderItemsTable.setItems(orderItemsList);
         dishCombo.setItems(dishList);
         
+        // Настройка ComboBox для отображения только названия блюда
+        dishCombo.setConverter(new javafx.util.StringConverter<Dish>() {
+            @Override
+            public String toString(Dish dish) {
+                return dish != null ? dish.getName() : "";
+            }
+
+            @Override
+            public Dish fromString(String string) {
+                return dishList.stream()
+                        .filter(d -> d.getName().equals(string))
+                        .findFirst()
+                        .orElse(null);
+            }
+        });
+        
+        // ID колонка скрыта
+        dishIdColumn.setVisible(false);
+        
         refreshMenu();
         updateOrderInfo();
     }
