@@ -16,6 +16,21 @@ public class Launcher {
         // CommandLineRunner отключен (App.java без @Component)
         applicationContext = SpringApplication.run(RestaurantApplication.class, args);
         
+        // Проверяем, что контекст инициализирован
+        if (applicationContext == null) {
+            System.err.println("Ошибка: Spring контекст не инициализирован");
+            System.exit(1);
+        }
+        
+        // Проверяем, что MainController доступен
+        try {
+            applicationContext.getBean(org.example.apprestaurant.controller.MainController.class);
+        } catch (Exception e) {
+            System.err.println("Ошибка: MainController не найден в Spring контексте: " + e.getMessage());
+            e.printStackTrace();
+            System.exit(1);
+        }
+        
         // Передаем контекст в JavaFX приложение
         HelloApplication.setSpringContext(applicationContext);
         
