@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apprestaurant.controller.DishController">
+   <children>
+      <Label text="Управление блюдами" styleClass="title-label" />
+      
+      <HBox spacing="10">
+         <children>
+            <VBox spacing="10" styleClass="pane">
+               <children>
+                  <Label text="Добавить блюдо" styleClass="section-label" />
+                  <Label text="Название:" />
+                  <TextField fx:id="nameField" />
+                  <Label text="Цена (р):" />
+                  <TextField fx:id="priceField" />
+                  <Label text="Состав:" />
+                  <TextArea fx:id="ingredientsField" prefRowCount="3" wrapText="true" />
+                  <Label text="Вес (г):" />
+                  <TextField fx:id="weightField" />
+                  <Button text="Добавить" onAction="#addDish" styleClass="button-primary" />
+               </children>
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox spacing="10">
+                     <children>
+                        <Button text="Обновить" onAction="#refreshTable" />
+                        <Button text="Удалить" onAction="#deleteDish" styleClass="button-danger" />
+                     </children>
+                  </HBox>
+                  
+                  <TableView fx:id="dishTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="nameColumn" text="Название" prefWidth="150" />
+                        <TableColumn fx:id="priceColumn" text="Цена" prefWidth="80" />
+                        <TableColumn fx:id="ingredientsColumn" text="Состав" prefWidth="200" />
+                        <TableColumn fx:id="weightColumn" text="Вес (г)" prefWidth="80" />
+                     </columns>
+                  </TableView>
+                  
+                  <Label fx:id="messageLabel" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="20" right="20" bottom="20" left="20" />
+   </padding>
+   <spacing>15</spacing>
+</VBox>

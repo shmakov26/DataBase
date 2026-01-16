@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apprestaurant.controller.OrderController">
+   <children>
+      <Label text="Управление заказами" styleClass="title-label" />
+      
+      <Label fx:id="orderInfoLabel" styleClass="section-label" />
+      
+      <HBox spacing="10">
+         <children>
+            <VBox spacing="10" styleClass="pane" prefWidth="300">
+               <children>
+                  <Label text="Действия с заказом" styleClass="section-label" />
+                  <Button text="Посадить посетителя" onAction="#visitorArrives" styleClass="button-primary" prefWidth="250" />
+                  
+                  <Separator />
+                  
+                  <Label text="Добавить блюдо в заказ" styleClass="section-label" />
+                  <Label text="Блюдо:" />
+                  <ComboBox fx:id="dishCombo" prefWidth="250" />
+                  <Label text="Количество:" />
+                  <TextField fx:id="quantityField" />
+                  <Button text="Добавить в заказ" onAction="#addDishToOrder" styleClass="button-primary" />
+                  
+                  <Separator />
+                  
+                  <Button text="Завершить заказ" onAction="#finishOrder" styleClass="button-primary" prefWidth="250" />
+                  
+                  <Separator />
+                  
+                  <Label text="Оплата" styleClass="section-label" />
+                  <Label text="Чаевые:" />
+                  <TextField fx:id="tipsField" />
+                  <Button text="Оплатить заказ" onAction="#payOrder" styleClass="button-primary" prefWidth="250" />
+                  
+                  <Separator />
+                  
+                  <Button text="Посетитель уходит" onAction="#visitorLeaves" styleClass="button-danger" prefWidth="250" />
+               </children>
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Меню" styleClass="section-label" />
+                  <TableView fx:id="menuTable" prefHeight="200">
+                     <columns>
+                        <TableColumn fx:id="dishIdColumn" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="dishNameColumn" text="Название" prefWidth="150" />
+                        <TableColumn fx:id="dishPriceColumn" text="Цена" prefWidth="100" />
+                     </columns>
+                  </TableView>
+                  
+                  <Label text="Текущий заказ" styleClass="section-label" />
+                  <TableView fx:id="orderItemsTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="itemDishColumn" text="Блюдо" prefWidth="150" />
+                        <TableColumn fx:id="itemQuantityColumn" text="Количество" prefWidth="100" />
+                        <TableColumn fx:id="itemPriceColumn" text="Цена" prefWidth="100" />
+                     </columns>
+                  </TableView>
+                  
+                  <Label fx:id="totalPriceLabel" styleClass="section-label" />
+                  <Label fx:id="messageLabel" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="20" right="20" bottom="20" left="20" />
+   </padding>
+   <spacing>15</spacing>
+</VBox>

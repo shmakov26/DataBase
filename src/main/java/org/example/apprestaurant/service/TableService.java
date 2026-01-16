@@ -30,6 +30,10 @@ public class TableService {
         tableRepository.deleteById(id);
     }
 
+    public List<TableEntity> getAllTables() {
+        return tableRepository.findAll();
+    }
+
     public List<TableEntity> getFreeTables() {
         return tableRepository.findByStatus(TableStatus.FREE);
     }

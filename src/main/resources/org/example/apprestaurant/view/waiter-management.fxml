@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apprestaurant.controller.WaiterController">
+   <children>
+      <Label text="Управление официантами" styleClass="title-label" />
+      
+      <HBox spacing="10">
+         <children>
+            <VBox spacing="10" styleClass="pane">
+               <children>
+                  <Label text="Добавить официанта" styleClass="section-label" />
+                  <Label text="Имя:" />
+                  <TextField fx:id="firstNameField" />
+                  <Label text="Фамилия:" />
+                  <TextField fx:id="lastNameField" />
+                  <Label text="Отчество:" />
+                  <TextField fx:id="middleNameField" />
+                  <Label text="Почта:" />
+                  <TextField fx:id="mailField" />
+                  <Label text="Телефон:" />
+                  <TextField fx:id="phoneField" />
+                  <Label text="Процентная ставка:" />
+                  <TextField fx:id="percentField" />
+                  <Button text="Добавить" onAction="#addWaiter" styleClass="button-primary" />
+               </children>
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button text="Обновить" onAction="#refreshTable" />
+                  
+                  <TableView fx:id="waiterTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="lastNameColumn" text="Фамилия" prefWidth="100" />
+                        <TableColumn fx:id="firstNameColumn" text="Имя" prefWidth="100" />
+                        <TableColumn fx:id="middleNameColumn" text="Отчество" prefWidth="100" />
+                        <TableColumn fx:id="mailColumn" text="Почта" prefWidth="150" />
+                        <TableColumn fx:id="phoneColumn" text="Телефон" prefWidth="120" />
+                        <TableColumn fx:id="percentColumn" text="Процент" prefWidth="80" />
+                     </columns>
+                  </TableView>
+                  
+                  <Label fx:id="messageLabel" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="20" right="20" bottom="20" left="20" />
+   </padding>
+   <spacing>15</spacing>
+</VBox>

@@ -18,15 +18,16 @@ public class HelloApplication extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/org/example/apprestaurant/view/main-view.fxml"));
         
         // Если есть Spring контекст, используем его для загрузки контроллера
         if (springContext != null) {
             fxmlLoader.setControllerFactory(springContext::getBean);
         }
         
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        scene.getStylesheets().add(getClass().getResource("/org/example/apprestaurant/styles/style.css").toExternalForm());
+        stage.setTitle("Система управления рестораном");
         stage.setScene(scene);
         stage.show();
     }

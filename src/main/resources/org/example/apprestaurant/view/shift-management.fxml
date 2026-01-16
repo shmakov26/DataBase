@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apprestaurant.controller.ShiftController">
+   <children>
+      <Label text="Управление сменами" styleClass="title-label" />
+      
+      <HBox spacing="10">
+         <children>
+            <VBox spacing="10" styleClass="pane">
+               <children>
+                  <Label text="Открыть смену" styleClass="section-label" />
+                  <Label text="Официант:" />
+                  <ComboBox fx:id="waiterCombo" prefWidth="200" />
+                  <Button text="Открыть смену" onAction="#openShift" styleClass="button-primary" />
+                  
+                  <Separator />
+                  
+                  <Label text="Закрыть смену" styleClass="section-label" />
+                  <Label text="ID смены:" />
+                  <ComboBox fx:id="shiftCombo" prefWidth="200" />
+                  <Button text="Закрыть смену" onAction="#closeShift" styleClass="button-danger" />
+                  
+                  <Separator />
+                  
+                  <Label text="Просмотр" styleClass="section-label" />
+                  <RadioButton fx:id="openShiftsRadio" text="Открытые смены" selected="true" onAction="#onRadioChanged" />
+                  <RadioButton fx:id="waiterShiftsRadio" text="Смены официанта" onAction="#onRadioChanged" />
+                  <Button text="Обновить" onAction="#refreshWaiterShifts" />
+               </children>
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="shiftTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="waiterColumn" text="Официант" prefWidth="150" />
+                        <TableColumn fx:id="startColumn" text="Начало" prefWidth="150" />
+                        <TableColumn fx:id="endColumn" text="Конец" prefWidth="150" />
+                        <TableColumn fx:id="tipsColumn" text="Чаевые" prefWidth="100" />
+                     </columns>
+                  </TableView>
+                  
+                  <Label fx:id="messageLabel" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="20" right="20" bottom="20" left="20" />
+   </padding>
+   <spacing>15</spacing>
+</VBox>

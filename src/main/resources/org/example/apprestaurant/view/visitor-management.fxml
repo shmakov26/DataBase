@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apprestaurant.controller.VisitorController">
+   <children>
+      <Label text="Управление посетителями" styleClass="title-label" />
+      
+      <HBox spacing="10">
+         <children>
+            <VBox spacing="10" styleClass="pane">
+               <children>
+                  <Label text="Создать посетителя" styleClass="section-label" />
+                  <Label text="Баланс:" />
+                  <TextField fx:id="balanceField" />
+                  <Button text="Создать" onAction="#createVisitor" styleClass="button-primary" />
+                  
+                  <Separator />
+                  
+                  <Label text="Выбрать текущего посетителя" styleClass="section-label" />
+                  <ComboBox fx:id="visitorCombo" prefWidth="200" />
+                  <Button text="Выбрать" onAction="#selectCurrentVisitor" />
+                  
+                  <Separator />
+                  
+                  <Label fx:id="currentVisitorLabel" styleClass="section-label" />
+               </children>
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button text="Обновить" onAction="#refreshTable" />
+                  
+                  <TableView fx:id="visitorTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="balanceColumn" text="Баланс" prefWidth="100" />
+                        <TableColumn fx:id="stateColumn" text="Статус" prefWidth="120" />
+                        <TableColumn fx:id="tableColumn" text="Столик" prefWidth="80" />
+                     </columns>
+                  </TableView>
+                  
+                  <Label fx:id="messageLabel" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="20" right="20" bottom="20" left="20" />
+   </padding>
+   <spacing>15</spacing>
+</VBox>

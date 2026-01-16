@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.apprestaurant.controller.TableController">
+   <children>
+      <Label text="Управление столиками" styleClass="title-label" />
+      
+      <HBox spacing="10">
+         <children>
+            <VBox spacing="10" styleClass="pane">
+               <children>
+                  <Label text="Создать столик" styleClass="section-label" />
+                  <Label text="Номер столика:" />
+                  <TextField fx:id="numberField" />
+                  <Label text="Количество мест:" />
+                  <TextField fx:id="seatsField" />
+                  <Button text="Создать" onAction="#addTable" styleClass="button-primary" />
+                  
+                  <Separator />
+                  
+                  <Label text="Просмотр" styleClass="section-label" />
+                  <RadioButton fx:id="allTablesRadio" text="Все столики" selected="true" onAction="#onRadioChanged" />
+                  <RadioButton fx:id="freeTablesRadio" text="Свободные столики" onAction="#onRadioChanged" />
+               </children>
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10" />
+               </padding>
+            </VBox>
+            
+            <VBox spacing="10" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox spacing="10">
+                     <children>
+                        <Button text="Обновить" onAction="#onRadioChanged" />
+                        <Button text="Удалить" onAction="#deleteTable" styleClass="button-danger" />
+                     </children>
+                  </HBox>
+                  
+                  <TableView fx:id="tableTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="numberColumn" text="Номер" prefWidth="100" />
+                        <TableColumn fx:id="seatsColumn" text="Мест" prefWidth="80" />
+                        <TableColumn fx:id="statusColumn" text="Статус" prefWidth="120" />
+                     </columns>
+                  </TableView>
+                  
+                  <Label fx:id="messageLabel" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="20" right="20" bottom="20" left="20" />
+   </padding>
+   <spacing>15</spacing>
+</VBox>

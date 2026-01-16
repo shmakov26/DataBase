@@ -20,6 +20,9 @@ module org.example.apprestaurant {
     requires spring.data.jpa;
     requires spring.data.commons;
 
-    opens org.example.apprestaurant to javafx.fxml;
+    opens org.example.apprestaurant to javafx.fxml, spring.core, spring.beans, spring.context;
+    opens org.example.apprestaurant.controller to javafx.fxml, spring.core, spring.beans, spring.context;
+    opens org.example.apprestaurant.entity to spring.core, spring.beans, spring.context, hibernate.core;
+    opens org.example.apprestaurant.service to spring.core, spring.beans, spring.context;
     exports org.example.apprestaurant;
 }
