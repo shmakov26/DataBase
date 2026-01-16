@@ -61,7 +61,7 @@ public class VisitorController implements Initializable {
         visitorIdList = FXCollections.observableArrayList();
         
         // ID колонка скрыта
-        idColumn.setVisible(false);
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("walletBalance"));
         stateColumn.setCellValueFactory(cellData -> {
             var state = cellData.getValue().getState();

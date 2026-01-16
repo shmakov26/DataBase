@@ -19,6 +19,7 @@ module org.example.apprestaurant {
     requires spring.tx;
     requires spring.data.jpa;
     requires spring.data.commons;
+    requires spring.beans;
 
     opens org.example.apprestaurant to javafx.fxml, spring.core, spring.beans, spring.context;
     opens org.example.apprestaurant.controller to javafx.fxml, spring.core, spring.beans, spring.context;
