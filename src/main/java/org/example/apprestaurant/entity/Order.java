@@ -1,7 +1,7 @@
-package org.example.entity;
+package org.example.apprestaurant.entity;
 
 import jakarta.persistence.*;
-import org.example.types.OrderStatus;
+import org.example.apprestaurant.types.OrderStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Data;

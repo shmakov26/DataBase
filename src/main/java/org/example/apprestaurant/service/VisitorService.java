@@ -1,13 +1,13 @@
-package org.example.service;
+package org.example.apprestaurant.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.example.entity.TableEntity;
-import org.example.entity.Visitor;
-import org.example.repository.TableEntityRepository;
-import org.example.repository.VisitorRepository;
-import org.example.types.TableStatus;
-import org.example.types.VisitorState;
+import org.example.apprestaurant.entity.TableEntity;
+import org.example.apprestaurant.entity.Visitor;
+import org.example.apprestaurant.repository.TableEntityRepository;
+import org.example.apprestaurant.repository.VisitorRepository;
+import org.example.apprestaurant.types.TableStatus;
+import org.example.apprestaurant.types.VisitorState;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

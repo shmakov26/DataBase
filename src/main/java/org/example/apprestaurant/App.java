@@ -1,7 +1,7 @@
-package org.example;
+package org.example.apprestaurant;
 
-import org.example.entity.*;
-import org.example.service.*;
+import org.example.apprestaurant.entity.*;
+import org.example.apprestaurant.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -256,6 +256,12 @@ public class App implements CommandLineRunner {
     }
 
     private void payOrder() {
+        if (currentVisitorId == null) {
+            throw new IllegalStateException("Нет активного посетителя");
+        }
+        if (currentOrderId == null) {
+            throw new IllegalStateException("Нет активного заказа");
+        }
         visitorService.startPaying(currentVisitorId);
         int tips = readInt("Чаевые: ");
         orderService.closeOrder(currentOrderId, tips);
@@ -263,6 +269,9 @@ public class App implements CommandLineRunner {
     }
 
     private void visitorLeaves() {
+        if (currentVisitorId == null) {
+            throw new IllegalStateException("Нет активного посетителя");
+        }
         visitorService.leave(currentVisitorId);
         currentVisitorId = null;
         currentOrderId = null;
@@ -274,9 +283,6 @@ public class App implements CommandLineRunner {
                 .forEach(v -> System.out.println("Id " + v.getId() + " | Статус " + v.getState()));
         int visitorId = readInt("Id обслуживаемого посетителя: ");
         Order order = orderService.getByVisitorId(visitorId);
-        if (order == null) {
-            throw new IllegalStateException("У посетителя нет активного заказа");
-        }
         currentVisitorId = visitorId;
         currentOrderId = order.getId();
         System.out.println("Посетитель успешно сменён");

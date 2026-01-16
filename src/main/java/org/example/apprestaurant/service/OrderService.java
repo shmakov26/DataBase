@@ -1,10 +1,10 @@
-package org.example.service;
+package org.example.apprestaurant.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.example.entity.*;
-import org.example.repository.*;
-import org.example.types.OrderStatus;
+import org.example.apprestaurant.entity.*;
+import org.example.apprestaurant.repository.*;
+import org.example.apprestaurant.types.OrderStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

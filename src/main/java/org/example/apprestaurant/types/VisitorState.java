@@ -1,4 +1,4 @@
-package org.example.types;
+package org.example.apprestaurant.types;
 
 public enum VisitorState {
     WAITING,

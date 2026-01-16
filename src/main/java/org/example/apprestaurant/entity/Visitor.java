@@ -1,7 +1,7 @@
-package org.example.entity;
+package org.example.apprestaurant.entity;
 
 import jakarta.persistence.*;
-import org.example.types.VisitorState;
+import org.example.apprestaurant.types.VisitorState;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.JdbcTypeCode;

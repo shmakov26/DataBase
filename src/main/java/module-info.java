@@ -10,6 +10,7 @@ module org.example.apprestaurant {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires kotlin.stdlib;
     requires spring.boot;
     requires spring.boot.autoconfigure;
     requires jakarta.persistence;

@@ -29,7 +29,7 @@ tasks.withType<JavaCompile> {
 
 application {
     mainModule.set("org.example.apprestaurant")
-    mainClass.set("org.example.apprestaurant.HelloApplication")
+    mainClass.set("org.example.apprestaurant.Launcher")
 }
 
 javafx {
@@ -52,8 +52,8 @@ dependencies {
     }
     implementation("com.github.almasb:fxgl:17.3") {
         exclude(group = "org.openjfx")
-        exclude(group = "org.jetbrains.kotlin")
     }
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 

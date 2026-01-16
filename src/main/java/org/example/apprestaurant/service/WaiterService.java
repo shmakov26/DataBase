@@ -1,9 +1,9 @@
-package org.example.service;
+package org.example.apprestaurant.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.example.entity.Waiter;
-import org.example.repository.WaiterRepository;
+import org.example.apprestaurant.entity.Waiter;
+import org.example.apprestaurant.repository.WaiterRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

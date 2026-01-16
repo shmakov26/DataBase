@@ -1,4 +1,4 @@
-package org.example.entity;
+package org.example.apprestaurant.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

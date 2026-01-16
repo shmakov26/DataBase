@@ -1,7 +1,7 @@
-package org.example.entity;
+package org.example.apprestaurant.entity;
 
 import jakarta.persistence.*;
-import org.example.types.TableStatus;
+import org.example.apprestaurant.types.TableStatus;
 import java.util.List;
 import lombok.Data;
 import lombok.experimental.Accessors;

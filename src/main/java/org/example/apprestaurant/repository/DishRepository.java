@@ -1,6 +1,6 @@
 package org.example.apprestaurant.repository;
 
-import org.example.entity.Dish;
+import org.example.apprestaurant.entity.Dish;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

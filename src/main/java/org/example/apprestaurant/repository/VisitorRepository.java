@@ -1,6 +1,6 @@
-package org.example.repository;
+package org.example.apprestaurant.repository;
 
-import org.example.entity.Visitor;
+import org.example.apprestaurant.entity.Visitor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

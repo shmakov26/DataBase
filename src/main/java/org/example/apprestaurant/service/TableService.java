@@ -1,10 +1,10 @@
-package org.example.service;
+package org.example.apprestaurant.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.example.entity.TableEntity;
-import org.example.types.TableStatus;
-import org.example.repository.TableEntityRepository;
+import org.example.apprestaurant.entity.TableEntity;
+import org.example.apprestaurant.types.TableStatus;
+import org.example.apprestaurant.repository.TableEntityRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,8 +26,8 @@ public class TableService {
         tableRepository.save(table);
     }
 
-    public void deleteTable(int number) {
-        tableRepository.deleteByNumber(number);
+    public void deleteTable(int id) {
+        tableRepository.deleteById(id);
     }
 
     public List<TableEntity> getFreeTables() {

@@ -1,7 +1,7 @@
-package org.example.repository;
+package org.example.apprestaurant.repository;
 
-import org.example.entity.TableEntity;
-import org.example.types.TableStatus;
+import org.example.apprestaurant.entity.TableEntity;
+import org.example.apprestaurant.types.TableStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
