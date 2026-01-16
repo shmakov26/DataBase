@@ -11,12 +11,11 @@ import java.util.List;
 
 @Repository
 public interface ShiftRepository extends JpaRepository<Shift, Integer> {
-//    @Query("SELECT CASE WHEN COUNT(s) > 0 THEN true ELSE false END FROM Shift s WHERE s.waiter = :waiter AND s.shiftEnd IS NULL")
     boolean existsByWaiterAndShiftEndIsNull(@Param("waiter") Waiter waiter);
 
-//    @Query("SELECT s FROM Shift s WHERE s.shiftEnd IS NULL")
+    @Query("SELECT s FROM Shift s JOIN FETCH s.waiter WHERE s.shiftEnd IS NULL")
     List<Shift> findByShiftEndIsNull();
 
-//    @Query("SELECT s FROM Shift s WHERE s.waiter.id = :id")
+    @Query("SELECT s FROM Shift s JOIN FETCH s.waiter WHERE s.waiter.id = :id")
     List<Shift> findByWaiterId(@Param("id") Integer id);
 }
