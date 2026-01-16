@@ -13,12 +13,14 @@ public class Launcher {
     public static void main(String[] args) {
         // Запускаем Spring Boot контекст
         // Веб-сервер отключен через application.properties (spring.main.web-application-type=none)
+        // CommandLineRunner отключен (App.java без @Component)
         applicationContext = SpringApplication.run(RestaurantApplication.class, args);
         
         // Передаем контекст в JavaFX приложение
         HelloApplication.setSpringContext(applicationContext);
         
         // Запускаем JavaFX приложение
+        // Application.launch не возвращает управление до закрытия приложения
         Application.launch(HelloApplication.class, args);
     }
     

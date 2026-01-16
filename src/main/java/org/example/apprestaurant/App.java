@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 import java.util.Scanner;
 
-@Component
+// @Component - отключено для запуска JavaFX версии
+// Для запуска консольной версии раскомментируйте @Component
+// @Component
 public class App implements CommandLineRunner {
 
     private final DishService dishService;
