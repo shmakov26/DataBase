@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lombok.Getter;
 import org.example.apprestaurant.entity.Visitor;
 import org.example.apprestaurant.service.ApplicationStateService;
 import org.example.apprestaurant.service.VisitorService;
@@ -53,6 +54,8 @@ public class VisitorController implements Initializable {
 
     private ObservableList<Visitor> visitorList;
     private ObservableList<Integer> visitorIdList;
+
+    @Getter
     private Integer currentVisitorId;
 
     @Override

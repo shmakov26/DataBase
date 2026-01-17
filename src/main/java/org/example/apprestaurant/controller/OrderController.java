@@ -85,9 +85,11 @@ public class OrderController implements Initializable {
     private ObservableList<OrderItem> orderItemsList;
     private Integer currentOrderId;
     private Order currentOrder;
+    private Integer visitorId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        visitorId = stateService.getCurrentVisitorId();
         dishList = FXCollections.observableArrayList();
         orderItemsList = FXCollections.observableArrayList();
         
@@ -134,7 +136,6 @@ public class OrderController implements Initializable {
     @FXML
     private void visitorArrives() {
         try {
-            Integer visitorId = stateService.getCurrentVisitorId();
             if (visitorId == null) {
                 showError("Сначала создайте и выберите посетителя");
                 return;
@@ -168,6 +169,7 @@ public class OrderController implements Initializable {
 
     @FXML
     private void addDishToOrder() {
+        currentOrderId = orderService.getByVisitorId(visitorId).getId();
         if (currentOrderId == null) {
             showError("Сначала посадите посетителя за столик");
             return;
@@ -200,6 +202,7 @@ public class OrderController implements Initializable {
 
     @FXML
     private void finishOrder() {
+        currentOrderId = orderService.getByVisitorId(visitorId).getId();
         if (currentOrderId == null) {
             showError("Нет активного заказа");
             return;
@@ -221,6 +224,7 @@ public class OrderController implements Initializable {
 
     @FXML
     private void payOrder() {
+        currentOrderId = orderService.getByVisitorId(visitorId).getId();
         if (currentOrderId == null) {
             showError("Нет активного заказа");
             return;
